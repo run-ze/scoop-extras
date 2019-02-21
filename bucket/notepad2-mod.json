@@ -19,6 +19,16 @@
             "Notepad2-mod"
         ]
     ],
+    "persist": [
+        "Notepad2.ini"
+    ],
+    "pre_install": [
+        "$FILE = 'Notepad2.ini'",
+        "if (!(Test-Path \"$persist_dir\\$FILE\")) {",
+        "   Write-Host -ForegroundColor Red \"Create empty config file for Notepad2-mod.\"",
+        "   New-Item -Force -Path \"$persist_dir\\$FILE\" -ItemType file -Value \"{}\" | Out-Null",
+        "}"
+    ],
     "checkver": {
         "github": "https://github.com/XhmikosR/notepad2-mod"
     },
